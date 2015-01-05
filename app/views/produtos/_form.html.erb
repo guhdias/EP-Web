@@ -1,37 +1,51 @@
-<%= form_for(@produto) do |f| %>
-  <% if @produto.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@produto.errors.count, "error") %> prohibited this produto from being saved:</h2>
+<%= form_for @produto, :html => {:class => 'form-horizontal'} do |f| %>
+<% if @produto.errors.any? %>
+<center>
+<div id="error_explanation">
+  <h2><%= pluralize(@produto.errors.count, "erro") %> <%= 'encontrado'.pluralize(@produto.errors.count) %>:</h2>
 
-      <ul>
-      <% @produto.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <div class="field">
-  <%= f.label :'Tipo:' %><br>
-  <%= f.collection_select :tipo_id, Tipo.all, :id, :tipo, prompt: true %>
+  <ul>
+    <% @produto.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+</center>
+<% end %>
+
+<div class="form-group">
+  <%= f.label :'Tipo:', :class => 'col-sm-3 control-label' %>
+  <div class="col-sm-9">
+    <%= f.collection_select :tipo_id, Tipo.all, :id, :tipo, {:prompt=>true}, {:class => 'form-control'} %>
   </div>
-  <div class="field">
-    <%= f.label :cbarras %><br>
-    <%= f.number_field :cbarras %>
+</div>
+<div class="form-group">
+  <%= f.label :'Código de Barras:', :class => 'col-sm-3 control-label' %>
+  <div class="col-sm-9">
+    <%= f.number_field :cbarras, :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :descricao %><br>
-    <%= f.text_field :descricao %>
+</div>
+<div class="form-group">
+  <%= f.label :'Descrição:', :class => 'col-sm-3 control-label' %>
+  <div class="col-sm-9">
+    <%= f.text_field :descricao, :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :valor %><br>
-    <%= f.text_field :valor %>
+</div>
+<div class="form-group">
+  <%= f.label :'Valor:', :class => 'col-sm-3 control-label' %>
+  <div class="col-sm-9">
+    <%= f.text_field :valor, :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :saldo %><br>
-    <%= f.number_field :saldo %>
+</div>
+<div class="form-group">
+  <%= f.label :'Saldo:', :class => 'col-sm-3 control-label' %>
+  <div class="col-sm-9">
+    <%= f.number_field :saldo, :class => 'form-control' %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+</div>
+<div class="form-group">
+  <div class="col-sm-offset-3 col-sm-9">
+    <%= f.submit 'Enviar', :class => 'btn btn-default' %>
   </div>
+</div>
 <% end %>

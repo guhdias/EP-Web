@@ -1,0 +1,65 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= produtos_path %>">Produtos 1.0</a>
+    </div>
+
+    <% if usuario_signed_in? %>
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produtos<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "Produtos", produtos_path %></li>
+            <% if current_usuario.admin? %>
+            <li><%= link_to "Novo Produto", new_produto_path %></li>
+            <% end %>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tipos<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "Tipos", tipos_path %></li>
+            <% if current_usuario.admin? %>
+            <li><%= link_to "Novo Tipo", new_tipo_path %></li>
+            <% end %>
+          </ul>
+        </li>
+        <li><%= link_to "PDV", pdv_index_path %></li>
+      </ul>
+
+      <% end %>
+      
+      <ul class="nav navbar-nav navbar-right">
+
+        <% if usuario_signed_in? %>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_usuario.email %> <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "Edit Profile", edit_usuario_registration_path %></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><%= link_to "Logout", destroy_usuario_session_path, method: :delete %></li>
+          </ul>
+        </li>
+
+        <% end %>
+
+        <li>
+          <% unless usuario_signed_in? %>
+          <%= link_to "Login", new_usuario_session_path %>
+          <% end %>
+        </li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>

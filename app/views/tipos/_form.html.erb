@@ -1,21 +1,27 @@
-<%= form_for(@tipo) do |f| %>
-  <% if @tipo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tipo.errors.count, "error") %> prohibited this tipo from being saved:</h2>
+<%= form_for @tipo, :html => {:class => 'form-horizontal'} do |f| %>
+<% if @tipo.errors.any? %>
+<center>
+<div id="error_explanation">
+  <h2><%= pluralize(@tipo.errors.count, "erro") %> <%= 'encontrado'.pluralize(@tipo.errors.count) %>:</h2>
 
-      <ul>
-      <% @tipo.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% @tipo.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+</center>
+<% end %>
 
-  <div class="field">
-    <%= f.label :tipo %><br>
-    <%= f.text_field :tipo %>
+<div class="form-group">
+  <%= f.label :'Tipo:', :class => 'col-sm-3 control-label' %>
+  <div class="col-sm-9">
+    <%= f.text_field :tipo, :class => 'form-control' %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+</div>
+<div class="form-group">
+  <div class="col-sm-offset-3 col-sm-9">
+    <%= f.submit 'Enviar', :class => 'btn btn-default' %>
   </div>
+</div>
 <% end %>

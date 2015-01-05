@@ -1,6 +1,18 @@
-<h1>New produto</h1>
+<% if current_usuario.admin? %>
 
-<%= render 'form' %>
+<table width = 50% align = center>
+	<tr>
+		<td>
+			<center><h1>Novo produto</h1></center>
+			<br>
+			<%= render 'form' %>
+		</td>
+	</tr>
+</table>
 
-<%= link_to 'Back', produtos_path %>
-<%= link_to 'New Tipo', new_tipo_path %>
+<% else %>
+<center>
+<h3>Você não tem permissão para cadastrar novos produtos.<br>
+Clique <%= link_to 'aqui', produtos_path %> para voltar a lista de produtos cadastrados.</h3>
+</center>
+<% end %>

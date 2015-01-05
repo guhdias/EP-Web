@@ -1,12 +1,20 @@
-<h2>Forgot your password?</h2>
+<div class="col-sm-6 col-md-4 col-md-offset-4">
+	<h1 class="text-center login-title">Esqueceu sua senha?</h1>
+	<div class="account-wall">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+		<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: "form-signin", method: :post}) do |f| %>
+		<%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+		<%= f.label :'E-mail:' %><br />
+		<%= f.email_field :email, :autofocus => true, class: "form-control" %>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
+		<br>
 
-<%= render "devise/shared/links" %>
+		<%= f.submit "Envie-me instruções", class: "btn btn-lg btn-primary btn-block" %>
+
+		<% end %>
+	</div>
+	<div class="text-center new-account">
+		<%= render "devise/shared/links" %>
+	</div>
+</div>
