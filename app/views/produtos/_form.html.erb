@@ -13,7 +13,7 @@
   
   <div class="field">
   <%= f.label :'Tipo:' %><br>
-  <%= f.collection_select :tipo_id, Tipo.all, :id, :tipo %>
+  <%= f.collection_select :tipo_id, Tipo.all, :id, :tipo, prompt: true %>
   </div>
   <div class="field">
     <%= f.label :cbarras %><br>
