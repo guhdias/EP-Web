@@ -1,10 +1,11 @@
 class ProdutosController < ApplicationController
   before_action :set_produto, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_usuario!
 
   # GET /produtos
   # GET /produtos.json
   def index
-    @produtos = Produto.all
+    @produtos = Produto.search(params[:search])
   end
 
   # GET /produtos/1

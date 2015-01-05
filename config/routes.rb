@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  get 'pdv/index'
+
+  devise_for :usuarios
   resources :tipos
 
   resources :produtos
+  
+  root to: "produtos#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
