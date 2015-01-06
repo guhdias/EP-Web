@@ -7,7 +7,7 @@
       <%= form_tag pdv_index_path, :method => 'get', :class => 'form-inline' do %>
       <%= label_tag :'search','Código de Barras:', class: 'control-label' %>&nbsp;&nbsp;
       <%= text_field_tag :search, params[:search], :class => 'form-control', :autofocus => true, :autocomplete => 'off', :value => '' %>
-      <%= submit_tag "Buscar", :name => nil, :class => 'btn btn-default' %>
+      <%= submit_tag "Buscar", :name => nil, :class => 'btn btn-primary' %>
       <% end %>
     </td>
   </tr>
