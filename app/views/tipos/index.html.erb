@@ -2,8 +2,10 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th style="text-align: center;" width=80%>Tipo</th>    
+      <th style="text-align: center;" width=80%>Tipo</th>   
+      <% if current_usuario.admin? %> 
       <th colspan="2" style="text-align: center;">Ações</th>
+      <% end %>
     </tr>
   </thead>
 
