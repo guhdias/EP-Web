@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
+  get 'usuarios/destroy'
+
+  get 'usuarios_controller/destroy'
+
+  get 'gerenciar_usuarios/index'
+
   get 'pdv/index'
 
   devise_for :usuarios
+  match 'usuarios/:id' => 'usuarios#destroy', :via => :delete, :as => :gerenciar_usuarios_destroy
+  match 'usuarios/:id' => 'usuarios#admin', :via => :get, :as => :gerenciar_usuarios_admin
+  resources :usuarios
+
   resources :tipos
 
   resources :produtos

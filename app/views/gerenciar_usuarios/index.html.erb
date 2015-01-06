@@ -1,0 +1,54 @@
+<% if current_usuario.admin? %>
+
+<div class="page-header">
+  <h1>Administradores cadastrados</h1>
+</div>
+
+    <% @usuarios = Usuario.all %> 
+    <% @usuarios.each do |usuario| %>
+    <% if usuario.admin? %>
+      <ul class="list-group">
+      <li class="list-group-item">
+          <span class="pull-right">
+          <%= link_to gerenciar_usuarios_destroy_path(usuario), method: :delete, data: { confirm: "Tem certeza que deseja excluir o usuário selecionado?" }  do %>
+            <span class="fa fa-trash"> Excluir</span>
+          <% end %>
+          </span>
+          <%= usuario.email %>
+        </li>
+      </ul>
+    <% end %>
+    <% end %>
+
+<br>
+<div class="page-header">
+  <h1>Usuarios cadastrados</h1>
+</div>
+
+    <% @usuarios = Usuario.all %> 
+    <% @usuarios.each do |usuario| %>
+    <% unless usuario.admin? %>
+      <ul class="list-group">
+      <li class="list-group-item">
+          <span class="pull-right">
+          <%= link_to gerenciar_usuarios_destroy_path(usuario), method: :delete, data: { confirm: "Tem certeza que deseja excluir o usuário selecionado?" }  do %>
+            <span class="fa fa-trash"> Excluir</span>
+          <% end %>
+          </span>
+          <span class="pull-right">
+          <%= link_to gerenciar_usuarios_admin_path(usuario) do %>
+            <span class="fa fa-plus-circle"> Tornar admin&nbsp;</span>
+          <% end %>
+          </span>
+          <%= usuario.email %>
+        </li>
+      </ul>
+    <% end %>
+    <% end %>
+
+<% else %>
+<center>
+<h3>Você não tem permissão para acessar esse recurso.<br>
+Clique <%= link_to 'aqui', produtos_path %> para voltar a lista de produtos cadastrados.</h3>
+</center>
+<% end %>

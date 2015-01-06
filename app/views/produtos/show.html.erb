@@ -28,9 +28,15 @@
     <% end %>
   </div>  
   <div class="col-xs-12 col-sm-4 emphasis">
+    <% if current_usuario.admin? %>
     <%= link_to @produto, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, class:"btn btn-danger btn-block"  do %>
     <span class="fa fa-trash"></span> Excluir
     <% end %>
+    <% else %>
+    <%= link_to @produto, class:"btn btn-default btn-block"  do %>
+    <span>&nbsp;</span>
+    <% end %>
+    <% end %>    
   </div>
   <div class="col-xs-12 col-sm-4 emphasis">
     <%= link_to produtos_path, class:"btn btn-success btn-block" do %>
