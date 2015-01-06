@@ -5,7 +5,7 @@ class ProdutosController < ApplicationController
   # GET /produtos
   # GET /produtos.json
   def index
-    @produtos = Produto.search(params[:search])
+    @produtos = Produto.search(params[:search]).page(params[:page]).per(30)
   end
 
   # GET /produtos/1

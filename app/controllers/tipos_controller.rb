@@ -5,7 +5,7 @@ class TiposController < ApplicationController
   # GET /tipos
   # GET /tipos.json
   def index
-    @tipos = Tipo.all
+    @tipos = Tipo.all.page(params[:page]).per(30)
   end
 
   # GET /tipos/1
